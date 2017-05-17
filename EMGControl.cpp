@@ -20,7 +20,6 @@
 #include "TimerManagement.h"
 
 static bool _EMGinitialised = false;
-bool printADCvals;
 
 
 EMGchannel_t EMG[NUM_EMG_CHANNELS];
@@ -50,38 +49,7 @@ void runEMG(void)
   // detect PEAK or HOLD on each EMG channel
   analyseSignal();
 
-  // print ADC values if M3 is enabled
-  if (printADCvals)
-  {
-    for (int c = 0; c < NUM_EMG_CHANNELS; c++)
-    {
-      //MYSERIAL_PRINT_PGM("M");
-      //MYSERIAL_PRINT(c);
-      //MYSERIAL_PRINT_PGM(": ");
-      //MYSERIAL_PRINT(EMG[c].signal);
-      //MYSERIAL_PRINT_PGM("\tR");
-      //MYSERIAL_PRINT(c);
-      //MYSERIAL_PRINT_PGM(": ");
-      //MYSERIAL_PRINT(EMG[c].sample);
-      //MYSERIAL_PRINT_PGM("\tN");
-      //MYSERIAL_PRINT(c);
-      //MYSERIAL_PRINT_PGM(": ");
-      //MYSERIAL_PRINT(EMG[c].noiseFloor.readMean());
-      //MYSERIAL_PRINT_PGM("\tP");
-      //MYSERIAL_PRINT(c);
-      //MYSERIAL_PRINT_PGM(": ");
-      //MYSERIAL_PRINT(EMG[c].PEAK);
-      //MYSERIAL_PRINT_PGM("\tH");
-      //MYSERIAL_PRINT(c);
-      //MYSERIAL_PRINT_PGM(": ");
-      //MYSERIAL_PRINT(EMG[c].HOLD);
-
-      //MYSERIAL_PRINT_PGM("\t");
-    }
-    //MYSERIAL_PRINT_PGM("\n");
-  }
-
-
+  // control finger using emg signal
   controlEMG();
 }
 
@@ -208,7 +176,7 @@ void controlEMG(void)
       currentGrip = 0;
 
     // change to new grip in the OPEN position
-    gripMovement(currentGrip, 0);
+    gripMovement(currentGrip, 0, BLANK, MAX_FINGER_SPEED);
 
 
     //MYSERIAL_PRINTLN_PGM("Grip Change");
@@ -241,7 +209,7 @@ void standardEMGControl(void)
 
     //MYSERIAL_PRINT_PGM("Arm reset");
 
-    gripMovement(currentGrip, BLANK);
+    gripMovement(currentGrip, BLANK, !currentDir, BLANK);
   }
 
 #elif (NUM_EMG_CHANNELS == 2)
@@ -250,13 +218,13 @@ void standardEMGControl(void)
   {
     EMG[0].PEAK = false;                // reset PEAK trigger
     //MYSERIAL_PRINTLN_PGM("Arm OPEN");
-    gripMovement(currentGrip, BLANK);
+    gripMovement(currentGrip, BLANK, OPEN, BLANK);
   }
   else if (EMG[1].PEAK && currentDir != CLOSE)
   {
     EMG[1].PEAK = false;                // reset PEAK trigger
     //MYSERIAL_PRINTLN_PGM("Arm CLOSE");
-    gripMovement(currentGrip, BLANK);
+    gripMovement(currentGrip, BLANK, CLOSE, BLANK);
   }
 
 #endif

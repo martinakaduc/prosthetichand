@@ -16,7 +16,6 @@
 #ifndef _EMG_CONTROL_H_
 #define _EMG_CONTROL_H_
 
-
 #include "CircleBuff.h"
 #include "TimerManagement.h"
 
@@ -24,17 +23,13 @@
 #define TENSE_CLOSE_RELAX_OPEN			// tense to close the hand, relax to open
 //#define TENSE_OPEN_RELAX_CLOSE		// tense to open the hand, relax to close
 
-
-
 #define NOISE_BUFFER_SIZE	128
 #define BUFFER_DEFAULT_VAL	925
-
 
 void runEMG(void);
 void getSample(void);
 void analyseSignal(void);
 void controlEMG(void);
-
 
 void initEMG(void);
 void calcNoiseFloor(int muscleNum, int  muscleVal);			// only generate noise floor when muscle is inactive
@@ -42,18 +37,10 @@ void standardEMGControl(void);
 void proportionalEMGControl(void);
 double calcPosChange(uint16_t sample);
 
-
 bool detect_peakStart(int currVal, int prevVal);
 bool detect_peakEnd(int currVal, int prevVal);
 
-
-
-extern bool printADCvals;
-
-
 extern int musclePins[NUM_EMG_CHANNELS];				// EMG pins
-
-
 
 typedef struct
 {
@@ -74,6 +61,5 @@ typedef struct
 } EMGchannel_t;
 
 extern EMGchannel_t EMG[NUM_EMG_CHANNELS];
-
 
 #endif /*_EMG_CONTROL_H_*/

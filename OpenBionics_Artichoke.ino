@@ -24,7 +24,7 @@
 
 void setup()
 {
-  //MYSERIAL.begin(38400);		// start serial
+  //Serial.begin(38400);		// start serial
   setDefaults();				// initialise serialCmd.buffs, finger positions and muscle control, read EEPROM presets
   IOconfig();					// config finger pins, initialise port expander
   startUpMessages();			// print welcome message, current hand configuration/settings

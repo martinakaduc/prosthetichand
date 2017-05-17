@@ -28,14 +28,13 @@
    For a more detailed explanation, have a look at our 'Grip Patterns' tutorial on www.openbionics.com/tutorials
 
 */
-
 uint8_t gripPos[NUM_GRIPS][NUM_GRIP_STEPS][(NUM_FINGERS * 2) + 1] =	// 3D array holding gripPos sequences
 {
   { // FIST
     //COUNT		F0				F1				F2				F3				F4
     {0,			FULLY_OPEN,		FULLY_OPEN,		FULLY_OPEN,		FULLY_OPEN,		FULLY_OPEN},	//OPEN
-    {10,		750,			BLANK,			BLANK,			BLANK,			BLANK},			//MIDPOINTA
-    {40,		750,			BLANK,			BLANK,			BLANK,			BLANK},			//MIDPOINTB
+    {10,		128,			BLANK,			BLANK,			BLANK,			BLANK},			//MIDPOINTA
+    {40,		128,			BLANK,			BLANK,			BLANK,			BLANK},			//MIDPOINTB
     {100,		FULLY_CLOSED,	FULLY_CLOSED,	FULLY_CLOSED,	FULLY_CLOSED,	FULLY_CLOSED},	//CLOSED
   },
   { // PALM
@@ -62,15 +61,15 @@ uint8_t gripPos[NUM_GRIPS][NUM_GRIP_STEPS][(NUM_FINGERS * 2) + 1] =	// 3D array 
   { // PINCH
     //COUNT		F0				F1				F2				F3				F4
     {0,			FULLY_OPEN,		FULLY_OPEN,		FULLY_OPEN,		FULLY_OPEN,		FULLY_OPEN},	//OPEN
-    {10,		750,			BLANK,			BLANK,			BLANK,			BLANK},			//MIDPOINTA
-    {40,		750,			BLANK,			BLANK,			BLANK,			BLANK},			//MIDPOINTB
-    {100,		850,			FULLY_CLOSED,	FULLY_OPEN,		FULLY_OPEN,		FULLY_OPEN},	//CLOSED
+    {10,		128,			BLANK,			BLANK,			BLANK,			BLANK},			//MIDPOINTA
+    {40,		128,			BLANK,			BLANK,			BLANK,			BLANK},			//MIDPOINTB
+    {100,		143,			FULLY_CLOSED,	FULLY_OPEN,		FULLY_OPEN,		FULLY_OPEN},	//CLOSED
   },
   { // TRIPOD
     //COUNT		F0				F1				F2				F3				F4
     {0,			FULLY_OPEN,		FULLY_OPEN,		FULLY_OPEN,		FULLY_OPEN,		FULLY_OPEN},	//OPEN
-    {10,		870,			  BLANK,			BLANK,			BLANK,			BLANK},			//MIDPOINTA
-    {40,		870,			  BLANK,			BLANK,			BLANK,			BLANK},			//MIDPOINTB
+    {10,		160,			  BLANK,			BLANK,			BLANK,			BLANK},			//MIDPOINTA
+    {40,		160,			  BLANK,			BLANK,			BLANK,			BLANK},			//MIDPOINTB
     {100,		FULLY_CLOSED,		FULLY_CLOSED,	FULLY_CLOSED,	FULLY_OPEN,		FULLY_OPEN},	//CLOSED
   }
 };

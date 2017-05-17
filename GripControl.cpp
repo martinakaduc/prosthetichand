@@ -54,7 +54,7 @@ void gripMovement(int gripNum, int inPos, int dir, int speed)
   {
     for (i = 0; i < NUM_FINGERS; i++)
     {
-      inPos = inPos + speed / (MAX_FINGER_SPEED - MIN_FINGER_SPEED);
+      inPos = inPos + speed * POS_REACHED_TOLERANCE / (MAX_FINGER_SPEED - MIN_FINGER_SPEED);
     }
   }
 
@@ -84,22 +84,22 @@ void gripMovement(int gripNum, int inPos)
         do
         {
           posA = gripPos[gripNum][(stepNum - stepModA)][fingerNum + 1];
-          if (posA == -1)
+          if (posA == BLANK)
             stepModA ++;
-        } while (posA == -1);
+        } while (posA == BLANK);
 
         do
         {
           posB = gripPos[gripNum][(stepNum + 1 + stepModB)][fingerNum + 1];
-          if (posB == -1)
+          if (posB == BLANK)
             stepModB ++;
-        } while (posB == -1);
+        } while (posB == BLANK);
 
         countA = gripPos[gripNum][(stepNum - stepModA)][GRIP_COUNT_LOC];
         countB = gripPos[gripNum][(stepNum + 1 + stepModB)][GRIP_COUNT_LOC];
 
         finger[fingerNum].write(map(inPos, countA, countB, posA, posB));
-
+        
         stepModA = 0;
         stepModB = 0;
       }

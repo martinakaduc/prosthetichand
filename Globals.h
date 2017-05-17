@@ -21,8 +21,6 @@
 
 // Uncomment any of the following to enable various features
 #define NUM_EMG_CHANNELS	1	// select the number of EMG channels to use (1 or 2)
-//#define USE_I2C_ADC			// I2C muscle sensors (requires I2C_ADC.h from https://github.com/Open-Bionics/Arduino_Libraries)
-//#define HANDLE_EN				// HANDle (Nunchuck) control
 #define EMG_PIN_0 A0
 #if (NUM_EMG_CHANNELS > 1)
 #define EMG_PIN_1 A1
@@ -39,6 +37,7 @@
 #define POS_REACHED_TOLERANCE 5    // tolerance for posReached()
 #define MAX_FINGER_SPEED  180
 #define MIN_FINGER_SPEED  0
+
 // DIRECTIONS
 #define RIGHT		1	    // handIs
 #define LEFT		2	    // handIs
@@ -47,7 +46,7 @@
 #define OFF			0	    // EEPROM flag
 #define ON			1	    // EEPROM flag
 #define PROP_MODE 2 //proportional mode control
-#define BLANK		(-1)
+#define BLANK		255
 
 // FINGERS
 #define NUM_FINGERS		5

@@ -17,10 +17,13 @@
 
 // initialise Finger class to array
 Servo finger[NUM_FINGERS];
+
 // ADVANCED SETTINGS
 struct advancedSettingsType advancedSettings;
+
 // USER SETTINGS
 struct userSettingsType userSettings;
+
 // FINGER & HAND INIT STATES
 int currentGrip = FIST_GRIP;				// current grip pattern for muscle sense change
 int currentDir = OPEN;
