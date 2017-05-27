@@ -17,7 +17,7 @@
 
 // initialise Finger class to array
 Servo finger[NUM_FINGERS];
-
+Servo wrist;
 // ADVANCED SETTINGS
 struct advancedSettingsType advancedSettings;
 

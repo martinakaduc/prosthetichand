@@ -64,7 +64,7 @@ void initialEEPROMconfig(void)			// write default values to EEPROM
   //MYSERIAL_PRINT_PGM("Initialising EEPROM values...");
 
   advancedSettings.handFlag = LEFT;
-  advancedSettings.instructionsFlag = ON;
+  advancedSettings.instructionsFlag = OFF;
   advancedSettings.muscleCtrlFlag = PROP_MODE;
   advancedSettings.muscleGraphFlag = OFF;
   advancedSettings.gripFlag = ON;

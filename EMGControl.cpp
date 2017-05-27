@@ -62,7 +62,7 @@ void getSample(void)
     noInterrupts();
     EMG[c].sample = analogRead(EMG[c].pin);
     interrupts();
-
+    Serial.println(EMG[c].sample);
     // add to noise floor if muscle is NOT active
     calcNoiseFloor(c, EMG[c].sample);
 
@@ -308,18 +308,18 @@ double calcPosChange(uint16_t sample)
     invert = true;
 
   Serial.print("samp: ");
-  Serial.println(sample);
-  //MYSERIAL_PRINT_PGM("\tpower: ");
-  //MYSERIAL_PRINT_PGM(power);
-  //MYSERIAL_PRINT_PGM("\tk: ");
-  //MYSERIAL_PRINT_PGM(k);
+  Serial.print(sample);
+  //Serial.print("  power: ");
+  //Serial.print(power);
+  //Serial.print("  k: ");
+  //Serial.print(k);
 
 
   // calculate position change as exponent (sensitivity is x^power proportional to _yPos)
   exp = pow(sample, power) / k;
 
-  //MYSERIAL_PRINT_PGM("exp: ");
-  //MYSERIAL_PRINTLN_PGM(exp);
+  //Serial.print("  exp: ");
+  //Serial.print(exp);
 
   if (invert)						// fix issue that -x^2 = x?^2
     exp = -exp;

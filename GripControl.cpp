@@ -54,10 +54,9 @@ void gripMovement(int gripNum, int inPos, int dir, int speed)
   {
     for (i = 0; i < NUM_FINGERS; i++)
     {
-      inPos = inPos + speed * POS_REACHED_TOLERANCE / (MAX_FINGER_SPEED - MIN_FINGER_SPEED);
+      //inPos = inPos + speed * POS_REACHED_TOLERANCE / (MAX_FINGER_SPEED - MIN_FINGER_SPEED);
     }
   }
-
   gripMovement(gripNum, inPos);
 }
 
@@ -99,6 +98,7 @@ void gripMovement(int gripNum, int inPos)
         countB = gripPos[gripNum][(stepNum + 1 + stepModB)][GRIP_COUNT_LOC];
 
         finger[fingerNum].write(map(inPos, countA, countB, posA, posB));
+        Serial.print("  Servo: ");
         Serial.print(map(inPos, countA, countB, posA, posB));
         stepModA = 0;
         stepModB = 0;

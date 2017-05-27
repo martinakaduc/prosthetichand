@@ -18,7 +18,6 @@
 
 #include <Arduino.h>	// data types (uint8_t...)
 #include <Servo.h>
-
 // Uncomment any of the following to enable various features
 #define NUM_EMG_CHANNELS	1	// select the number of EMG channels to use (1 or 2)
 #define EMG_PIN_0 A0
@@ -32,8 +31,8 @@
 
 // LIMITS
 #define MAX_FINGERS     6     // maximum number of _fingers
-#define MAX_FINGER_POS    170     // maximum motor position
-#define MIN_FINGER_POS    10      // minimum motor position
+#define MAX_FINGER_POS    180     // maximum motor position
+#define MIN_FINGER_POS    0      // minimum motor position
 #define POS_REACHED_TOLERANCE 5    // tolerance for posReached()
 #define MAX_FINGER_SPEED  180
 #define MIN_FINGER_SPEED  0
@@ -46,7 +45,7 @@
 #define OFF			0	    // EEPROM flag
 #define ON			1	    // EEPROM flag
 #define PROP_MODE 2 //proportional mode control
-#define BLANK		255
+#define BLANK	 255
 
 // FINGERS
 #define NUM_FINGERS		5
@@ -75,7 +74,7 @@
 
 // FINGERLIB FINGER CLASS
 extern Servo finger[NUM_FINGERS];			// instances of the Finger class, from FingerLib.h
-
+extern Servo wrist;
 // FINGER & HAND STATES
 extern int currentGrip;						// current grip pattern for muscle sense change
 extern int currentDir;						// current direction of the hand (Open/Closed)
@@ -108,15 +107,15 @@ extern struct userSettingsType userSettings;
 // STORES SERIAL STRINGS IN PROGMEM, SAVES 3KB RAM
 /*#define  FORCE_INLINE __attribute__((always_inline)) inline
 
-FORCE_INLINE void serialprintPGM(const char *str)
-{
+  FORCE_INLINE void serialprintPGM(const char *str)
+  {
   char ch = pgm_read_byte(str);
   while (ch)
   {
     MYSERIAL.write(ch);
    ch = pgm_read_byte(++str);
   }
-}*/
+  }*/
 
 //#define MYSERIAL_PRINT(x) MYSERIAL.print(x);
 //#define MYSERIAL_PRINT_F(x,y) MYSERIAL.print(x,y);

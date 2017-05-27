@@ -24,11 +24,12 @@ void servoPinAssignment(void)
 {
   if (advancedSettings.handFlag == RIGHT)
   {
-    finger[0].attach(6);        // attach the direction pins and the analog sense pins for each motor
-    finger[1].attach(11);      // attach the direction pins and the analog sense pins for each motor
-    finger[2].attach(10);     // attach the direction pins and the analog sense pins for each motor
-    finger[3].attach(9);        // attach the direction pins and the analog sense pins for each motor
-    finger[4].attach(3);       // attach the direction pins and the analog sense pins for each motor
+    finger[0].attach(5);        // attach the direction pins and the analog sense pins for each motor
+    finger[1].attach(3);      // attach the direction pins and the analog sense pins for each motor
+    finger[2].attach(9);     // attach the direction pins and the analog sense pins for each motor
+    finger[3].attach(10);        // attach the direction pins and the analog sense pins for each motor
+    finger[4].attach(11);       // attach the direction pins and the analog sense pins for each motor
+    wrist.attach(6);            //attach the direction pins and the analog sense pins for wrist's motor
   }
   else if (advancedSettings.handFlag == LEFT)
   {
@@ -37,6 +38,7 @@ void servoPinAssignment(void)
     finger[2].attach(10);        // attach the direction pins and the analog sense pins for each motor
     finger[3].attach(9);      // attach the direction pins and the analog sense pins for each motor
     finger[4].attach(3);      // attach the direction pins and the analog sense pins for each motor
+    wrist.attach(6);            //attach the direction pins and the analog sense pins for wrist's motor
   }
 }
 
@@ -49,12 +51,13 @@ void IOconfig(void)   // assign pins for each finger, store pins within list and
 #endif
 
   // enable/disable motors
-  if (!advancedSettings.motorEnable)
+  if (!advancedSettings.motorEnable) {
     for (int i = 0; i < NUM_FINGERS; i++)
     {
       finger[i].detach();
     }
-  else servoPinAssignment();
+    wrist.detach();
+  } else servoPinAssignment();
   //Declare EMG sensor pins
   pinMode(EMG[0].pin, INPUT);
 #if (NUM_EMG_CHANNELS > 1)
