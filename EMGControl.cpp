@@ -307,8 +307,8 @@ double calcPosChange(uint16_t sample)
   if (isEven(power))				// fix issue that -x^2 = x?^2
     invert = true;
 
-  //MYSERIAL_PRINT_PGM("samp: ");
-  //MYSERIAL_PRINT_PGM(sample);
+  Serial.print("samp: ");
+  Serial.println(sample);
   //MYSERIAL_PRINT_PGM("\tpower: ");
   //MYSERIAL_PRINT_PGM(power);
   //MYSERIAL_PRINT_PGM("\tk: ");

@@ -99,11 +99,12 @@ void gripMovement(int gripNum, int inPos)
         countB = gripPos[gripNum][(stepNum + 1 + stepModB)][GRIP_COUNT_LOC];
 
         finger[fingerNum].write(map(inPos, countA, countB, posA, posB));
-        
+        Serial.print(map(inPos, countA, countB, posA, posB));
         stepModA = 0;
         stepModB = 0;
       }
       break;
     }
   }
+  Serial.println();
 }
