@@ -62,7 +62,8 @@ void getSample(void)
     noInterrupts();
     EMG[c].sample = analogRead(EMG[c].pin);
     interrupts();
-    Serial.println(EMG[c].sample);
+    Serial.print("Signal: ");
+    Serial.print(EMG[c].sample);
     // add to noise floor if muscle is NOT active
     calcNoiseFloor(c, EMG[c].sample);
 
@@ -307,7 +308,7 @@ double calcPosChange(uint16_t sample)
   if (isEven(power))				// fix issue that -x^2 = x?^2
     invert = true;
 
-  Serial.print("samp: ");
+  Serial.print("  samp: ");
   Serial.print(sample);
   //Serial.print("  power: ");
   //Serial.print(power);

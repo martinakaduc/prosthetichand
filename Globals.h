@@ -46,6 +46,7 @@
 #define ON			1	    // EEPROM flag
 #define PROP_MODE 2 //proportional mode control
 #define BLANK	 255
+#define SUBVAL 50
 
 // FINGERS
 #define NUM_FINGERS		5

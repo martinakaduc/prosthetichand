@@ -72,7 +72,7 @@ void initialEEPROMconfig(void)			// write default values to EEPROM
   advancedSettings.initConfigFlag = true;  // set flag to signal config complete
 
   userSettings.sensitivityOffset = 500;
-  userSettings.holdTime = 400;
+  userSettings.holdTime = 500;
 
   EEPROM_writeStruct(ADVANCED_CTRL_LOC, advancedSettings);
   EEPROM_writeStruct(USER_SETTINGS_LOC, userSettings);
